@@ -8,6 +8,7 @@ The MyToken contract is designed to fulfill the following requirements:
 4.	The contract should have a burn function that decreases the total supply of tokens and deducts the specified amount from the balance of the "sender" address.
 5.	The burn function should include conditionals to ensure that the balance of the "sender" is greater than or equal to the amount to be burned.
 
+
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
 
@@ -33,6 +34,7 @@ contract MyToken {
         }   
     }
 }
+
 
 Usage
 The contract provides the following public variables:
