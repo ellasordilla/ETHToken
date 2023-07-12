@@ -60,7 +60,9 @@ Burn Function
 The burn function allows tokens to be destroyed and deducted from the balance of a specified address. It takes two parameters:
 
 _address: The Ethereum address from which the tokens will be burned.
+
 _value: The amount of tokens to be burned and deducted from the balance.
+
 Before deducting the tokens, the burn function checks if the balance of the _address is greater than or equal to the _value. If the condition is met, the function decreases the totalSupply by the specified _value and deducts the same amount from the balance of the _address.
 
 It's important to note that the mint and burn functions are public, meaning they can be called by anyone with access to the contract.
