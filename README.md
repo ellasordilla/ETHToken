@@ -48,6 +48,7 @@ balances: A mapping that associates Ethereum addresses with their corresponding 
 The contract provides two functions to interact with the token:
 
 Mint Function
+
 The mint function allows new tokens to be created and added to the balance of a specified address. It takes two parameters:
 
 _address: The Ethereum address to which the new tokens will be minted.
@@ -55,6 +56,7 @@ _value: The amount of tokens to be minted and added to the balance.
 When the mint function is called, it increases the totalSupply by the specified _value and adds the same amount to the balance of the _address.
 
 Burn Function
+
 The burn function allows tokens to be destroyed and deducted from the balance of a specified address. It takes two parameters:
 
 _address: The Ethereum address from which the tokens will be burned.
@@ -64,5 +66,6 @@ Before deducting the tokens, the burn function checks if the balance of the _add
 It's important to note that the mint and burn functions are public, meaning they can be called by anyone with access to the contract.
 
 License
+
 The code in this contract is licensed under the MIT license. The SPDX-License-Identifier at the top of the code file indicates that the code is licensed under the MIT license.
 
