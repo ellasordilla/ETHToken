@@ -38,22 +38,31 @@ contract MyToken {
 
 Usage
 The contract provides the following public variables:
-•	tokenName: A string representing the name of the token ("Carmina").
-•	tokenAbbrv: A string representing the abbreviation of the token ("Mina").
-•	totalSupply: An unsigned integer representing the total supply of tokens.
+
+tokenName: A string representing the name of the token ("Carmina").
+tokenAbbrv: A string representing the abbreviation of the token ("Mina").
+totalSupply: An unsigned integer representing the total supply of tokens.
 The contract also includes the following mapping variable:
-•	balances: A mapping that associates Ethereum addresses with their corresponding token balances. Each address is mapped to an unsigned integer representing the balance.
+
+balances: A mapping that associates Ethereum addresses with their corresponding token balances. Each address is mapped to an unsigned integer representing the balance.
 The contract provides two functions to interact with the token:
+
 Mint Function
 The mint function allows new tokens to be created and added to the balance of a specified address. It takes two parameters:
-•	_address: The Ethereum address to which the new tokens will be minted.
-•	_value: The amount of tokens to be minted and added to the balance.
+
+_address: The Ethereum address to which the new tokens will be minted.
+_value: The amount of tokens to be minted and added to the balance.
 When the mint function is called, it increases the totalSupply by the specified _value and adds the same amount to the balance of the _address.
+
 Burn Function
 The burn function allows tokens to be destroyed and deducted from the balance of a specified address. It takes two parameters:
-•	_address: The Ethereum address from which the tokens will be burned.
-•	_value: The amount of tokens to be burned and deducted from the balance.
+
+_address: The Ethereum address from which the tokens will be burned.
+_value: The amount of tokens to be burned and deducted from the balance.
 Before deducting the tokens, the burn function checks if the balance of the _address is greater than or equal to the _value. If the condition is met, the function decreases the totalSupply by the specified _value and deducts the same amount from the balance of the _address.
+
 It's important to note that the mint and burn functions are public, meaning they can be called by anyone with access to the contract.
+
 License
 The code in this contract is licensed under the MIT license. The SPDX-License-Identifier at the top of the code file indicates that the code is licensed under the MIT license.
+
