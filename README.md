@@ -9,10 +9,10 @@ The MyToken contract is designed to fulfill the following requirements:
 5.	The burn function should include conditionals to ensure that the balance of the "sender" is greater than or equal to the amount to be burned.
 
 
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.18;
+    // SPDX-License-Identifier: MIT
+    pragma solidity 0.8.18;
 
-contract MyToken {
+    contract MyToken {
 
     // public variables here
     string public tokenName = "Carmina";
@@ -31,9 +31,9 @@ contract MyToken {
         if (balances[_address] >= _value){
         totalSupply -= _value;
         balances [_address] -= _value;  
-        }   
+             }   
+        }
     }
-}
 
 
 Usage
