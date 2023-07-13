@@ -30,8 +30,8 @@ The MyToken contract is designed to fulfill the following requirements:
     function burn (address _address, uint _value) public {
         if (balances[_address] >= _value){
         totalSupply -= _value;
-        balances [_address] -= _value;
-  	        }   
+        balances [_address] -= _value;  
+            }   
         }
     }
 
