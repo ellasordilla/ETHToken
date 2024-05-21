@@ -1,0 +1,37 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Baril {
+    address public owner;
+    uint256 public ammoCount;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Caller is not the owner");
+        _;
+    }
+
+    constructor(uint256 initialAmmo) {
+        owner = msg.sender;
+        ammoCount = initialAmmo;
+    }
+
+    function addAmmo(uint256 amount) public onlyOwner {
+        require(amount > 6, "Amount should be greater than 6");
+        ammoCount += amount;
+    }
+
+    function shoot() public {
+        require(ammoCount > 0, "No ammo left to shoot");
+        
+        if (ammoCount <= 0) {
+            revert("Not enough ammo to shoot");
+        }
+
+        ammoCount -= 1;
+    }
+
+    function checkAmmo() public view returns (uint256) {
+        assert(ammoCount >= 0); 
+        return ammoCount;
+    }
+}
