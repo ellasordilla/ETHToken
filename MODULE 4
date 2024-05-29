@@ -1,0 +1,62 @@
+// SPDX-License-Identifier: MIT
+/*
+1. Minting new tokens: The platform should be able to create new tokens and distribute them to players as rewards. Only the owner can mint tokens.
+2. Transferring tokens: Players should be able to transfer their tokens to others.
+3. Redeeming tokens: Players should be able to redeem their tokens for items in the in-game store.
+4. Checking token balance: Players should be able to check their token balance at any time.
+5. Burning tokens: Anyone should be able to burn tokens, that they own, that are no longer needed.
+*/
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract ELLGRAXIASCOFFEE is ERC20, Ownable {
+
+    mapping(uint256 => uint256) public shopPrices;
+
+    constructor() ERC20("Degen", "DGN") Ownable(msg.sender) {
+        shopPrices[1] = 150;  
+        shopPrices[2] = 170;  
+        shopPrices[3] = 50;  
+        shopPrices[4] = 10; 
+        shopPrices[5] = 50;
+        shopPrices[6] = 40;
+        shopPrices[7] = 70;
+        shopPrices[8] = 55;
+        shopPrices[9] = 80;
+    }
+
+    function mintTokens(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
+
+    function sendTokens(address to, uint256 amount) public {
+        require(balanceOf(msg.sender) >= amount, "Transfer Failed: It appears that you lack of balance." );
+        transfer(to, amount);
+    }
+
+    function showShopItems() external pure returns (string memory) {
+        string memory saleOptions = "The items on sale: {1} Degen NFT (150) {2} Fashionable Degen T-shirt & Hoodie (170) {3} Random IN-GAME Cosmetic Item (30) {4} Degen Sticker Pack (10) {5} Degen Makeup Kit (50) {6} Degen Plush Toy (40) {7} Degen Jewelry Set (70) {8} Degen Perfume (55) {9} Degen Handbag (80)";
+        return saleOptions;
+    }
+
+    function purchaseItem(uint256 item) public {
+        require(shopPrices[item] > 0, "Item is not available.");
+        require(balanceOf(msg.sender) >= shopPrices[item], "Redeem Failed: Insufficient balance.");
+        _transfer(msg.sender, owner(), shopPrices[item]);
+    }
+
+    function burnTokens(uint256 amount) public {
+        require(balanceOf(msg.sender) >= amount, "Burn Failed: You don't have enough balance.");
+        _burn(msg.sender, amount);
+    }
+
+    function checkBalance() external view returns (uint256) {
+        return balanceOf(msg.sender);
+    }   
+    
+    function decimals() public pure override returns (uint8) {
+        return 0;
+    }
+}
